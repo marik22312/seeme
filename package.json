@@ -1,0 +1,31 @@
+{
+  "name": "seeme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin",
+    "build": "tsc --outDir bin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marik22312/seeme.git"
+  },
+  "author": "Marik Shnitman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marik22312/seeme/issues"
+  },
+  "homepage": "https://github.com/marik22312/seeme#readme",
+  "dependencies": {
+    "@types/yargs": "^11.0.0",
+    "figlet": "^1.2.0",
+    "puppeteer": "^1.5.0",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.3.3",
+    "typescript": "^2.9.2"
+  }
+}
