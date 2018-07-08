@@ -1,0 +1,21 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "semi": 2,
+        "dot-location": [2, "property"],
+        "curly": 2,
+        "indent": [1, "tab"],
+        "no-use-before-define": 1,
+        "no-extra-semi": 1,
+        "no-duplicate-case": 2,
+        "no-dupe-keys": 2,
+        "no-dupe-args": 2,
+        "no-cond-assign": 2
+    }
+}
