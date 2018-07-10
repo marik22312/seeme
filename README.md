@@ -39,7 +39,7 @@ TBA
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [Gitub](https://github.com/marik22312)
+* **Marik Shnitman** - *Initial work* - [Gitub](https://github.com/marik22312)
 * **Asaf Hadad** - *Initial work* - [Github](https://github.com/asaf147369)
 
 
