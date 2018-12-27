@@ -1,6 +1,6 @@
 module.exports = {
 	defaults: {
-		PATH: process.cwd() + '\\screenshots',
+		PATH: process.cwd() + '\\screenshots\\',
 		RESOLUTIONS: ['1920x1080','1440x900','1366x768','1280x800','375x667','360x640']
 	}
 };
