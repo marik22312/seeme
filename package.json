@@ -23,8 +23,11 @@
   "homepage": "https://github.com/marik22312/seeme#readme",
   "dependencies": {
     "figlet": "^1.2.0",
+    "normalize-url": "^4.1.0",
     "puppeteer": "^1.5.0",
     "yargs": "^11.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^5.14.1"
+  }
 }
