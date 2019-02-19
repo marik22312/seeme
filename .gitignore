@@ -1,3 +1,6 @@
 node_modules/
 build/
 screenshots/
+
+#OS files
+*.DS_STORE

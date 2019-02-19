@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
-
+const normalizeUrl = require('normalize-url');
+const fs = require('fs');
 module.exports = class Capture {
 	constructor(yargs) {
-		this._url = yargs.url;
+		this._url = normalizeUrl(yargs.url);
 		this._res = yargs.res;
 		this._path = yargs.path;
 		this._puppeteer = null;
@@ -33,30 +34,52 @@ module.exports = class Capture {
 	}) {
 		const res = options.res.split('x');
 		
-		console.log('Setting VP');
+		console.log('Setting Viewport:', res[0] + 'x' + res[1]);
 		await this._page.setViewport({
 			width: parseInt(res[0]),
 			height: parseInt(res[1])
 		});
 		console.log('Capturing');
-		await this._page.screenshot({
-			path,
+		return await this._page.screenshot({
 			fullPage: true,
 			type: 'png'
 		});
 	}
 
+	async _validateDirectory(filename) {
+		if (fs.existsSync(this._path)) {
+			return console.log(this._path, 'Exists!');
+		}
+		console.debug('Creating directory...');
+		return fs.mkdirSync(this._path);
+	}
+
+	async _createImage(filename, data) {
+		const name = this._path + '\/' + filename;
+		fs.writeFileSync(name, data);
+	}
+
 	async run() {
-		await this._startPupeteer();
-		await this._goToPage(this._url);
-		console.log('Running!');
-		for (let i = 0; i < this._res.length; i++) {
-			console.log('Capturing!', this._res[i]);
-			await this._capture(this._path+ i + '.png', {
-				res: this._res[i]
-			})
-				.then(res => console.log('YEAH!'))
-				.catch(err => console.log('NEIN!', err));
+		try {
+			
+			await this._startPupeteer();
+			await this._goToPage(this._url);
+			await this._validateDirectory();
+			
+			for (let i = 0; i < this._res.length; i++) {
+				console.log('Capturing!', this._res[i]);
+				const image = await this._capture(this._path+ this._res[i] + '.png', {
+					res: this._res[i]
+				});
+				
+				await this._createImage(this._res[i] + '.jpg', image);
+				
+			}
+			
+			this._puppeteer.close();
+		} catch (err) {
+			console.log(err);
+			this._puppeteer.close();
 		}
 	}
 };
